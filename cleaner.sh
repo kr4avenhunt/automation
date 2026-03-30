@@ -57,8 +57,16 @@ for file in *; do
 	if [ ! -d "$base/$nome" ]; then
 		mkdir "$base/$nome"
 	fi
-
-	mv --backup=numbered "$file" "$base/$nome"
+	
+	if [ -f "$base/$nome/$file" ]; then
+		ext=$(echo "$file" | rev | cut -d . -f1 | rev)
+		name=${file%.*}
+		new_file="${name}_copia.${ext}"
+		mv "$file" "$new_file"
+		mv "$new_file" "$base/$nome"
+	else
+		mv "$file" "$base/$nome"
+	fi
 
 	echo -e "Spostato ${CIANO}$file${RESET} -> $nome" 
 	sleep 1
