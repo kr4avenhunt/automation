@@ -1,3 +1,5 @@
-# automation
-- **The Backup Script** -> script che copia una cartella specifica in una cartella di "sicurezza", magari aggiungendo la data al nome del file
-- **System Monitor** -> script che, appena lo lanci, ti stampa a video: lo spazio rimasto sul disco (df -h), l'utilizzo della RAM (free -m)e se il sistema ha bisogno di aggiornamenti
+# Automation
+- [x] **Mass Renamer**: Rinomina file dentro una cartella in maniera sequenziale.
+- [ ] **The Backup Script**: Backup datato automatico.
+- [ ] **System Monitor**: Dashboard rapida (Disk, RAM, Updates).
+- [ ] **Install.sh**: Configurazione automatica per Cron.
