@@ -1,9 +1,17 @@
 #!/bin/bash
 
 DEST="$HOME/backups"
+DATA=$(date +%Y-%m-%d)
+NOME="backup_${DATA}"	
+list=( * )
 
-if [ ! -d "$DEST" ]; then
-	mkdir "$DEST"
-fi
+mkdir -p "$DEST/$NOME"
 
-for 
+echo "Copia dei file in corso.."
+cp -r "${list[@]}" "$DEST/$NOME"
+
+cd "$DEST"
+
+zip -r "${NOME}.zip" "$NOME"
+
+rm -rf "$NOME"
