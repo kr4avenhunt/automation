@@ -7,6 +7,7 @@ num_img=0
 num_ppt=0
 num_other=0
 
+GIALLO='\033[0;33m'
 CIANO='\033[0;36m'
 VIOLA='\033[0;35m'
 ROSSO='\033[0;31m'
@@ -17,8 +18,8 @@ RESET='\033[0m'
 base="$HOME/archivio"
 
 
-if [ ! -d $base ]; then
-	mkdir $base
+if [ ! -d "$base" ]; then
+	mkdir "$base"
 fi
 
 echo ""
@@ -58,17 +59,22 @@ for file in *; do
 		mkdir "$base/$nome"
 	fi
 	
+
 	if [ -f "$base/$nome/$file" ]; then
-		ext=$(echo "$file" | rev | cut -d . -f1 | rev)
-		name=${file%.*}
-		new_file="${name}_copia.${ext}"
+		if [[ "$file" == *.* && "$file" != .* ]]; then
+			ext=${file##*.}
+			name=${file%.*}
+			new_file="${name}_copia.${ext}"
+		else
+			new_file="${file}_copia"
+		fi
 		mv "$file" "$new_file"
 		mv "$new_file" "$base/$nome"
 	else
 		mv "$file" "$base/$nome"
 	fi
 
-	echo -e "Spostato ${CIANO}$file${RESET} -> $nome" 
+	echo -e "Spostato ${CIANO}$file${RESET} -> ${base}/$nome" 
 	sleep 1
 done
 
@@ -76,6 +82,7 @@ done
 num_tot=$((num_docs + num_ppt + num_pdf + num_data + num_img + num_other))
 echo ""
 echo -e "\e[1mProcesso terminato, file spostati: ${CIANO}$num_tot file\e[0m${RESET}"
+echo -e "${GIALLO}$num_pdf${RESET} Pdf -> pdf"
 echo -e "${ROSSO}$num_img${RESET} Immagini -> immagini"
 echo -e "${BLU}$num_docs${RESET} Documenti di Testo -> documenti"
 echo -e "${VERDE}$num_data${RESET} Fogli di calcolo -> dati"
