@@ -1,13 +1,22 @@
-# Automation - Bash Repository to automate boring functions
-I made this repo to educational purpose mainly, I improved my bash skills making a project that could be useful. 
-The repo is made up of 4 importants scripts:
-## **Mass Renamer**:
-To rename files in sequence like 42fsadsa.pdf, 53jfh3.pdf become file1.pdf, file2.pdf
-## **Backup Script**:
-If ran in a directory creates a new directory named "backups" in the user's home, then creates a backup of all the direcory's file it ran in and names the backup "backup_%year-%month-%day". REQUIRES: zip
-## Cleaner Script:
-If ran in a directory it moves all the files (except cleaner.sh) in a directory "archive" in /home/$USER, sorting them by extension and giving a colorful and clear output of what's going on.
-## **System Monitor**:
-Rapid dashboard with System infos and current CPU, RAM and Disk usage. REQUIRES: lspci
-## **Install.sh**: Configurazione automatica per Cron.
+# Automation - Bash Repository to Automate Boring Tasks
 
+I made this repository mainly for educational purposes to improve my Bash skills by building something practical and useful. 
+
+The repository consists of 5 main scripts:
+
+## **Mass Renamer**
+Renames files sequentially (e.g., `42fsadsa.pdf` and `53jfh3.pdf` become `file1.pdf` and `file2.pdf`).
+
+## **Backup Script**
+Creates a `backups` directory in the user's home folder and backs up all files from the current working directory, naming the archive `backup_YYYY-MM-DD.zip`.  
+*Requires:* `zip`
+
+## **Cleaner Script**
+Moves all files from the current directory (except `cleaner.sh`) into an `archive` folder inside `/home/$USER`, sorting them automatically by file extension with a colorful visual output.
+
+## **System Monitor**
+A quick dashboard displaying system information and real-time CPU, RAM and Disk usage.  
+*Requires:* `pciutils` (`lspci`)
+
+## **Install.sh**
+Automatic setup script that installs missing dependencies and configures Cron for automated execution.
